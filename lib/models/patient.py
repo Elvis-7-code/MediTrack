@@ -7,3 +7,6 @@ class Patient:
         self.age = age
         self.gender = gender
         Patient.all.append(self)
+
+    def __repr__(self):
+        return f"<Patient {self.name}(ID: {self.id})>"    
