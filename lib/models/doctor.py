@@ -6,3 +6,6 @@ class Doctor:
         self.name = name
         self.specializtion = specialization
         Doctor.all.append(self)
+
+    def __repr__(self):   
+        return f"<Doctor {self.name}(ID: {self.id})>" 
