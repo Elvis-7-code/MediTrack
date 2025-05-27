@@ -8,3 +8,6 @@ class Appointment:
         self.appointment_date = appointment_date
         self.notes = notes
         Appointment.all.append(self)
+
+    def _repr_(self):
+        return f"<Appointment #{self.id} on {self.appointment_date} for patient {self.patient.name}>"    
