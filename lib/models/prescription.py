@@ -9,3 +9,6 @@ class Prescription:
         self.dosage = dosage
         self.instruction = instructions 
         Prescription.all.append(self)
+
+    def __repr__(self):
+        return f"<Prescription {self.medication} for {self.patient.name}>"    
