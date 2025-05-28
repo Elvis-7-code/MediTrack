@@ -12,3 +12,6 @@ def seed_data():
     pr2 = Prescription(p2, d2,"Hydrocorticone","Apply twice a day", "For external use only")
 
     print("Seed data loaded.")
+
+    if _name_ == "_main_":
+        seed_data()
