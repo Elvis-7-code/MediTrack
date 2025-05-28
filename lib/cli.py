@@ -9,3 +9,7 @@ def main():
     print("Patients:")
     for p in Patient.all:
         print(f" - {p}")
+
+    print ("\nDoctors:")
+    for d in Doctors.all:
+        print(f" - {d}")    
