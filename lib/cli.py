@@ -17,3 +17,7 @@ def main():
     print ("\nAppointments:")
     for a in Appointment.all:
         print(f" - {a}")     
+
+    print ("\nPrescriptions:")
+    for p in Prescription.all:
+        print(f" - {pr}")    
