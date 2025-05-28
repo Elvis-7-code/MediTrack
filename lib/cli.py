@@ -6,4 +6,6 @@ from lib.models.prescription import Prescription
 def main():
     print("=== MediTrack Hospital Management System ===\n")
 
-    
+    print("Patients:")
+    for p in Patient.all:
+        print(f" - {p}")
