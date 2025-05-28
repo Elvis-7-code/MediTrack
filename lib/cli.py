@@ -20,4 +20,7 @@ def main():
 
     print ("\nPrescriptions:")
     for p in Prescription.all:
-        print(f" - {pr}")    
+        print(f" - {pr}") 
+
+    if _name_ == "_main_":
+        main()       
