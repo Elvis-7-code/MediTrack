@@ -8,3 +8,7 @@ def seed_data():
     a1 = Appointment(p1, d1, "2025-06-01", "Routine checkup")
     a2 = Appointment(p2, d2, "2025-06-02", "Skin rash evaluation")
     
+    pr1 = Prescription(p1, d1, "Aspirin", "100mg", "Take after meals")
+    pr2 = Prescription(p2, d2,"Hydrocorticone","Apply twice a day", "For external use only")
+
+    print("Seed data loaded.")
