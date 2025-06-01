@@ -1,14 +1,20 @@
-class Prescription:
-    all = []
+# prescription.py
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+from db.setup_db import Base
 
-    def _init_(self, patient, doctor, medication, dosage, instructions):
-        self.id = len(Prescription.all) +1
-        self.patient = patient
-        self.doctor = doctor
-        self.medication = medication
-        self.dosage = dosage
-        self.instruction = instructions 
-        Prescription.all.append(self)
+class Prescription(Base):
+    __tablename__ = 'prescriptions'
+
+    id = Column(Integer, primary_key=True)
+    patient_id = Column(Integer, ForeignKey('patients.id'), nullable=False)
+    doctor_id = Column(Integer, ForeignKey('doctors.id'), nullable=False)
+    medication = Column(String)
+    dosage = Column(String)
+    instructions = Column(String)
+
+    patient = relationship("Patient", back_populates="prescriptions")
+    doctor = relationship("Doctor", back_populates="prescriptions")
 
     def __repr__(self):
-        return f"<Prescription {self.medication} for {self.patient.name}>"    
+        return f"<Prescription {self.medication} for {self.patient.name}>"

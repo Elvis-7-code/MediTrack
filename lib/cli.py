@@ -1,26 +1,37 @@
-from lib.models.patient import Patient
-from lib.models.doctor import Doctor
-from lib.models.appointment import Appointment
-from lib.models.prescription import Prescription
+
+
+from helper import (
+    exit_program,
+    list_patients,
+    list_doctors,
+    list_appointments,
+    list_prescriptions
+)
 
 def main():
-    print("=== MediTrack Hospital Management System ===\n")
+    while True:
+        menu()
+        choice = input("> ").strip()
+        if choice == "0":
+            exit_program()
+        elif choice == "1":
+            list_patients()
+        elif choice == "2":
+            list_doctors()
+        elif choice == "3":
+            list_appointments()
+        elif choice == "4":
+            list_prescriptions()
+        else:
+            print("Invalid choice. Please try again.\n")
 
-    print("Patients:")
-    for p in Patient.all:
-        print(f" - {p}")
+def menu():
+    print("\n=== MediTrack Hospital Management System ===")
+    print("0. Exit")
+    print("1. List Patients")
+    print("2. List Doctors")
+    print("3. List Appointments")
+    print("4. List Prescriptions")
 
-    print ("\nDoctors:")
-    for d in Doctors.all:
-        print(f" - {d}")   
-
-    print ("\nAppointments:")
-    for a in Appointment.all:
-        print(f" - {a}")     
-
-    print ("\nPrescriptions:")
-    for p in Prescription.all:
-        print(f" - {pr}") 
-
-    if _name_ == "_main_":
-        main()       
+if __name__ == "__main__":
+    main()

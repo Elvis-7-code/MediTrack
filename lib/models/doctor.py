@@ -1,11 +1,17 @@
-class Doctor:
-    all = []
+# doctor.py
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from db.setup_db import Base
 
-    def __init__(self, name, specialization):
-        self.id = len(Doctor.all) + 1
-        self.name = name
-        self.specializtion = specialization
-        Doctor.all.append(self)
+class Doctor(Base):
+    __tablename__ = 'doctors'
 
-    def __repr__(self):   
-        return f"<Doctor {self.name}(ID: {self.id})>" 
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    specialization = Column(String)
+
+    appointments = relationship("Appointment", back_populates="doctor")
+    prescriptions = relationship("Prescription", back_populates="doctor")
+
+    def __repr__(self):
+        return f"<Doctor {self.name}, ID: {self.id}>"
