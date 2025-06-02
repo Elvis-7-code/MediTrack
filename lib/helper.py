@@ -2,53 +2,54 @@ from lib.models.patient import Patient
 from lib.models.doctor import Doctor
 from lib.models.appointment import Appointment
 from lib.models.prescription import Prescription
+from lib.db.setup_db import Session  # import the sessionmaker
 
+def find_patient_by_id(session, patient_id):
+    return session.query(Patient).filter_by(id=patient_id).first()
 
-def find_patient_by_id(patient_id):
-    return next((p for p in Patient.all if p.id == patient_id), None)
-
-def find_doctor_by_id(doctor_id):
-    return next((d for d in Doctor.all if d.id == doctor_id), None)       
-
+def find_doctor_by_id(session, doctor_id):
+    return session.query(Doctor).filter_by(id=doctor_id).first()
 
 def exit_program():
     print("Exiting the program. Goodbye!")
     exit(0)
 
-def list_patients():
+def list_patients(session):
     print("\n=== List of Patients ===")
-    if not Patient.all:
+    patients = session.query(Patient).all()
+    if not patients:
         print("No patients found.")
     else:
-        for patient in Patient.all:
+        for patient in patients:
             print(f"ID: {patient.id}, Name: {patient.name}, Age: {patient.age}")
 
-def list_doctors():
+def list_doctors(session):
     print("\n=== List of Doctors ===")
-    if not Doctor.all:
+    doctors = session.query(Doctor).all()
+    if not doctors:
         print("No doctors found.")
     else:
-        for doctor in Doctor.all:
+        for doctor in doctors:
             print(f"ID: {doctor.id}, Name: {doctor.name}, Specialization: {doctor.specialization}")
 
-def list_appointments():
+def list_appointments(session):
     print("\n=== List of Appointments ===")
-    if not Appointment.all:
+    appointments = session.query(Appointment).all()
+    if not appointments:
         print("No appointments found.")
     else:
-        for appointment in Appointment.all:
-            patient = find_patient_by_id(appointment.patient_id)
-            doctor = find_doctor_by_id(appointment.doctor_id)
-            print(f"ID: {appointment.id}, Patient: {patient.name if patient else 'Unknown'}, Doctor: {doctor.name if doctor else 'Unknown'}, Date: {appointment.date}")                  
+        for appointment in appointments:
+            patient = find_patient_by_id(session, appointment.patient_id)
+            doctor = find_doctor_by_id(session, appointment.doctor_id)
+            print(f"ID: {appointment.id}, Patient: {patient.name if patient else 'Unknown'}, Doctor: {doctor.name if doctor else 'Unknown'}, Date: {appointment.appointment_date}")
 
-def list_prescriptions():
+def list_prescriptions(session):
     print("\n=== List of Prescriptions ===")
-    if not Prescription.all:
+    prescriptions = session.query(Prescription).all()
+    if not prescriptions:
         print("No prescriptions found.")
     else:
-        for prescription in Prescription.all:
-            patient = find_patient_by_id(prescription.patient_id)
-            doctor = find_doctor_by_id(prescription.doctor_id)
-            print(f"ID: {prescription.id}, Patient: {patient.name if patient else 'Unknown'}, Doctor: {doctor.name if doctor else 'Unknown'}, Medication: {prescription.medication}, Dosage: {prescription.dosage}, Instructions: {prescription.instructions}") 
-            
-             
+        for prescription in prescriptions:
+            patient = find_patient_by_id(session, prescription.patient_id)
+            doctor = find_doctor_by_id(session, prescription.doctor_id)
+            print(f"ID: {prescription.id}, Patient: {patient.name if patient else 'Unknown'}, Doctor: {doctor.name if doctor else 'Unknown'}, Medication: {prescription.medication}, Dosage: {prescription.dosage}, Instructions: {prescription.instructions}")
