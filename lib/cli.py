@@ -1,6 +1,6 @@
 
 
-from helper import (
+from lib.helper import (
     exit_program,
     list_patients,
     list_doctors,

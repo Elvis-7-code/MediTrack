@@ -1,8 +1,7 @@
 # appointment.py
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
-from lib.db.setup_db import Base
-
+from lib.db.base import Base
 class Appointment(Base):
     all = []
     __tablename__ = 'appointments'

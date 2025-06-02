@@ -1,7 +1,7 @@
 # patient.py
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from db.setup_db import Base
+from lib.db.base import Base
 
 class Patient(Base):
     all = []

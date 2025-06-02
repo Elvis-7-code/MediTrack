@@ -1,7 +1,8 @@
-from models.patient import Patient
-from models.doctor import Doctor
-from models.appointment import Appointment
-from models.prescription import Prescription
+from lib.models.patient import Patient
+from lib.models.doctor import Doctor
+from lib.models.appointment import Appointment
+from lib.models.prescription import Prescription
+
 
 def find_patient_by_id(patient_id):
     return next((p for p in Patient.all if p.id == patient_id), None)
