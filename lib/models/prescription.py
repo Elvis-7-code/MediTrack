@@ -4,6 +4,8 @@ from sqlalchemy.orm import relationship
 from db.setup_db import Base
 
 class Prescription(Base):
+    all = []
+    
     __tablename__ = 'prescriptions'
 
     id = Column(Integer, primary_key=True)

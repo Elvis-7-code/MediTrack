@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from lib.db.setup_db import Base
 
 class Appointment(Base):
+    all = []
     __tablename__ = 'appointments'
 
     id = Column(Integer, primary_key=True)

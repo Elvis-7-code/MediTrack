@@ -1,4 +1,4 @@
-from lib.db.setup_db import engine, Base
+from setup_db import engine, Base
 
 # Import all model classes so SQLAlchemy knows about them
 from lib.models.patient import Patient

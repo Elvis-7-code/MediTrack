@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from db.setup_db import Base
 
 class Doctor(Base):
+    all = []
     __tablename__ = 'doctors'
 
     id = Column(Integer, primary_key=True)

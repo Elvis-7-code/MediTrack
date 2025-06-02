@@ -4,6 +4,9 @@ from sqlalchemy.orm import relationship
 from db.setup_db import Base
 
 class Patient(Base):
+    all = []
+
+    
     __tablename__ = 'patients'
 
     id = Column(Integer, primary_key=True)
@@ -16,3 +19,4 @@ class Patient(Base):
 
     def __repr__(self):
         return f"<Patient {self.name} (ID: {self.id})>"
+    
